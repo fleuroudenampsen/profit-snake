@@ -51,7 +51,7 @@
         };
         firebase.initializeApp(config);
 
-        
+        var database = firebase.database();
         
         var loginButton = document.getElementById('login-button').addEventListener('click', function() {
             var email = document.getElementById('email').value;
@@ -72,7 +72,7 @@
             var newUser = {
                 name : "test"
             };
-            firebase.database().ref('users').push(newUser);
+            database.ref('users').push(newUser);
         }
     </script>
 
