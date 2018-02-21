@@ -2,7 +2,6 @@ var drawModule = (function () {
 
    
     var bodySnake = function(x, y) {
-        console.log(userColor);
         ctx.fillStyle = userColor;
         ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
         ctx.strokeStyle = 'darkgreen';
@@ -35,7 +34,7 @@ var drawModule = (function () {
             snake.push({x:i, y:0});
         }  
     }
-      
+
     var paint = function(){
         ctx.fillStyle = 'lightgrey';
         ctx.fillRect(0, 0, w, h);
@@ -145,7 +144,11 @@ var drawModule = (function () {
             snapshot.forEach(function(data) {
                 var item = data.val();
                 if (item.position !== undefined) {
-                  drawOtherBodySnake(item.color, item.position.x, item.position.y)
+                    for(var i = 0; i < item.lengte; i++) {
+                        // bodySnake(snake[i].x, snake[i].y);
+                        drawOtherBodySnake(item.color, item.position.x + i, item.position.y)
+                    }
+
                 }
             });
         });
