@@ -14,6 +14,7 @@
             <h1>Profit snake</h1>
         </div>
         <div id="login" class="row">
+            <h2>Nieuwe gebruiker</h2>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="email-span">E-mail</span>
@@ -26,7 +27,7 @@
                 </div>
                 <input type="password" class="form-control" id="password" aria-describedby="password-span">
             </div>
-            <button id="login-button" type="button" class="btn btn-primary" >Login</button>
+            <button id="create-button" type="button" class="btn btn-primary" >Aanmaken</button>
         </div>
     </div>
 
@@ -48,12 +49,11 @@
 
         
         
-        var loginButton = document.getElementById('login-button').addEventListener('click', function() {
+        var loginButton = document.getElementById('create-button').addEventListener('click', function() {
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
-            firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
+            firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
                 $("#login").hide();
-                $("#screen").show();
                 $("#user").html(email);
             });
         });
