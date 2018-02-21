@@ -12,11 +12,24 @@
             <h1>Profit snake</h1>
         </div>
         <div class="row">
-            <button>login</button>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="email-span">E-mail</span>
+                </div>
+                <input type="text" class="form-control" id="email" aria-describedby="email-span">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="password-span">Password</span>
+                </div>
+                <input type="password" class="form-control" id="password" aria-describedby="password-span">
+            </div>
+            <button id="login-button" type="button" class="btn btn-primary" >Login</button>
         </div>
     </div>
 
 
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -28,6 +41,15 @@
             messagingSenderId: "916747872760"
         };
         firebase.initializeApp(config);
+
+
+        var loginButton = document.getElementById('login-button').addEventListener('click', function() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
+                console.log('tst');
+            });
+        });
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
