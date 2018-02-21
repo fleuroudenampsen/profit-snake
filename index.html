@@ -50,14 +50,8 @@
             messagingSenderId: "916747872760"
         };
         firebase.initializeApp(config);
-<<<<<<< HEAD
+        var database = firebase.database();
 
-        var database = firebase.database();
-=======
-        var database = firebase.database();
-        
->>>>>>> 2db35475bd290878a7fd8b6f4ebafee840d43862
-        
         document.getElementById('login-button').addEventListener('click', function() {
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
