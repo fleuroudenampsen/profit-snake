@@ -3,35 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-4  col-centered">
-                <span class="header">Prof</span><span class="header red">it</span><span class="header">4Snake</span>
-
-            </div>
+            <h1>Profit snake</h1>
         </div>
-        <div class="row" id="login">
-            <div class="col-md-4 col-centered">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="email-span">E-mail</span>
-                    </div>
-                    <input type="text" class="form-control" id="email" aria-describedby="email-span">
+        <div id="login" class="row">
+            <h2>Nieuwe gebruiker</h2>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="email-span">E-mail</span>
                 </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="password-span">Password</span>
-                    </div>
-                    <input type="password" class="form-control" id="password" aria-describedby="password-span">
-                </div>
-                <button id="login-button" type="button" class="btn btn-primary" >Login</button>
+                <input type="text" class="form-control" id="email" aria-describedby="email-span">
             </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="password-span">Password</span>
+                </div>
+                <input type="password" class="form-control" id="password" aria-describedby="password-span">
+            </div>
+            <button id="create-button" type="button" class="btn btn-primary" >Aanmaken</button>
         </div>
     </div>
 
@@ -53,27 +49,16 @@
 
         
         
-        var loginButton = document.getElementById('login-button').addEventListener('click', function() {
+        var loginButton = document.getElementById('create-button').addEventListener('click', function() {
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
-            firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-                console.log('Welkom!');
+            console.log(email, password);
+            firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
                 $('#login').hide();
-
-                putInDatabase();
-
-                window.location.href = "game.html";
-            }).catch(function(){
-                console.log('mislukt')
+            }).catch(function(error){
+                console.log('mislukt', error)
             });
         });
-
-        function putInDatabase() {
-            var newUser = {
-                name : "test"
-            };
-            firebase.database().ref('users').push(newUser);
-        }
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
