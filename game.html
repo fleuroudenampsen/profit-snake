@@ -40,10 +40,16 @@
             var users = firebase.database().ref('users/');
             users.on('value', function(usersList) {
 
+                var index = 1;
                 usersList.forEach(function(item) {
-                    $( "#users" ).append("<div class='col-md-12'>");
-                    $( "#users" ).append("<label>" + item.val().name + "</label>");
-                    $( "#users" ).append("</div>");
+                    $( "#users" ).append(
+                        "<div class='col-md-12'>" +
+                            "<div class='userColor' id='color-" + index + "'></div>" +
+                            "<label>" + item.val().name + "</label>" +
+                        "</div>"
+                    );
+
+                    $('#color-' + index).css('background-color', item.val().color);
                 });
 
             });

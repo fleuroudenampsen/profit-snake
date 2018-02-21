@@ -64,12 +64,18 @@
             });
         });
 
+        function getRandomColor() {
+            return '#'+Math.floor(Math.random()*16777215).toString(16);
+        }
+
         function putInDatabase(email) {
             var newUser = {
-                name : email
+                name : email,
+                color: getRandomColor()
             };
             database.ref('users').push(newUser);
         }
+
 
     </script>
 
