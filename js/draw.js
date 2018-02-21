@@ -28,6 +28,10 @@ var drawModule = (function () {
       ctx.fillStyle = 'blue';
       ctx.fillText(score_text, 145, h-5);
       $('#score').text("Score: " +score);
+
+      database.ref('users').child(userKey).child('score').set(score );
+
+
     }
   
     var drawSnake = function() {
@@ -90,6 +94,7 @@ var drawModule = (function () {
           
           pizza(food.x, food.y); 
           scoreText();
+          
     }
   
     var createFood = function() {
