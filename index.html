@@ -50,30 +50,38 @@
             messagingSenderId: "916747872760"
         };
         firebase.initializeApp(config);
+<<<<<<< HEAD
 
         var database = firebase.database();
+=======
+        var database = firebase.database();
         
-        var loginButton = document.getElementById('login-button').addEventListener('click', function() {
+>>>>>>> 2db35475bd290878a7fd8b6f4ebafee840d43862
+        
+        document.getElementById('login-button').addEventListener('click', function() {
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
             firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-                console.log('Welkom!');
-                $('#login').hide();
-
-                putInDatabase();
-
+                putInDatabase(email);
                 window.location.href = "game.html";
             }).catch(function(){
                 console.log('mislukt')
             });
         });
 
-        function putInDatabase() {
+        function getRandomColor() {
+            return '#'+Math.floor(Math.random()*16777215).toString(16);
+        }
+
+        function putInDatabase(email) {
             var newUser = {
-                name : "test"
+                name : email,
+                color: getRandomColor()
             };
             database.ref('users').push(newUser);
         }
+
+
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

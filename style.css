@@ -22,6 +22,14 @@
     color: #bf0a30;
 }
 
+.userColor {
+    width: 10px;
+    height: 10px;
+    background: red;
+    display: inline-block;
+    margin-right: 5px;
+}
+
 body {
     background: #ebebeb;
 
