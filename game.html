@@ -15,14 +15,15 @@
 
             </div>
         </div>
-        <div>
-            <canvas id='mycanvas' width='350' height='350' >
-            </canvas>
-            <p>Press start!</p>
-            <button id='start'>START</button>
+        <div class="row">
+            <div class="col-md-6">
+                <canvas id='mycanvas' width='350' height='350' >
+                </canvas>
+                <p>Press start!</p>
+                <button id='start'>START</button>
+            </div>
+            <div class="col-md-6" id="users"></div>
         </div>
-
-        <div class="row" id="users"></div>
     </div>
 
 
@@ -57,6 +58,7 @@
                     );
 
                     $('#color-' + index).css('background-color', item.val().color);
+                    index++;
                 });
 
             });
