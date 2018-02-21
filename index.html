@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4  col-centered">
                 <h1>Profit snake</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
+        <div class="row" id="login">
+            <div class="col-md-4  col-centered">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="email-span">E-mail</span>
@@ -51,7 +51,7 @@
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
             firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-                console.log('tst');
+                $('#login').hide();
             });
         });
     </script>
