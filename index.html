@@ -10,11 +10,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4  col-centered">
-                <h1>Profit snake</h1>
+                <span class="header">Prof</span><span class="header red">it</span><span class="header">4Snake</span>
+
             </div>
         </div>
         <div class="row" id="login">
-            <div class="col-md-4  col-centered">
+            <div class="col-md-4 col-centered">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="email-span">E-mail</span>
@@ -51,7 +52,10 @@
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
             firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
+                console.log('Welkom!');
                 $('#login').hide();
+            }).catch(function(){
+                console.log('mislukt')
             });
         });
     </script>
