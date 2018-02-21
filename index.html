@@ -68,13 +68,16 @@
         }
 
         function putInDatabase(email) {
-            var newUser = {
-                name : email,
-                color: getRandomColor()
-            };
-            database.ref('users').push(newUser);
+            database.ref().child('users').orderByChild('name').equalTo(email).once("value", function(snapshot) {
+                if(snapshot.val() == null) {
+                    var newUser = {
+                        name: email,
+                        color: getRandomColor()
+                    };
+                    database.ref('users').push(newUser);
+                }
+            });
         }
-
 
     </script>
 
