@@ -2,11 +2,18 @@ var drawModule = (function () {
 
    
     var bodySnake = function(x, y) {
-          ctx.fillStyle = 'green';
+          ctx.fillStyle = userColor;
           ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
           ctx.strokeStyle = 'darkgreen';
           ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
     }
+
+    var drawOtherBodySnake = function(color, x, y) {
+        ctx.fillStyle = color;
+        ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+        ctx.strokeStyle = 'darkgreen';
+        ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+  }
   
     var pizza = function(x, y) {
           ctx.fillStyle = 'yellow';
@@ -118,6 +125,7 @@ var drawModule = (function () {
             database.ref().child('users').orderByChild('name').equalTo(user.email).on("value", function(snapshot) {
                 snapshot.forEach(function(data) {
                     userKey = data.key;
+                    userColor = data.color;
                 })
             })
         });
@@ -136,7 +144,7 @@ var drawModule = (function () {
             snapshot.forEach(function(data) {
                 var item = data.val();
                 if (item.position !== undefined) {
-                  bodySnake(item.position.x, item.position.y)
+                  drawOtherBodySnake(item.color, item.position.x, item.position.y)
                 }
             });
         });
