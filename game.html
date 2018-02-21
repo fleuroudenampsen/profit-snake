@@ -15,22 +15,17 @@
 
             </div>
         </div>
-        <div class="row" id="users">
-
-        </div>
+        <div class="row" id="users"></div>
     </div>
 
 
     <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
     <script>
         $(document).ready(function() {
-            console.log( "ready!" );
             listAllUsers();
         });
 
-
         function listAllUsers() {
-
             // Initialize Firebase
             var config = {
                 apiKey: "AIzaSyDCc-mZo4wBh0lqr-278x26LStN1GuLhN8",
@@ -43,8 +38,14 @@
             firebase.initializeApp(config);
 
             var users = firebase.database().ref('users/');
-            users.on('value', function(snapshot) {
-                console.log(snapshot.val());
+            users.on('value', function(usersList) {
+
+                usersList.forEach(function(item) {
+                    $( "#users" ).append("<div class='col-md-12'>");
+                    $( "#users" ).append("<label>" + item.val().name + "</label>");
+                    $( "#users" ).append("</div>");
+                });
+
             });
         }
     </script>
