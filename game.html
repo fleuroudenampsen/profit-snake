@@ -29,28 +29,40 @@
 
     <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
     <script>
+        var config = {
+            apiKey: "AIzaSyDCc-mZo4wBh0lqr-278x26LStN1GuLhN8",
+            authDomain: "profit-snake.firebaseapp.com",
+            databaseURL: "https://profit-snake.firebaseio.com",
+            projectId: "profit-snake",
+            storageBucket: "profit-snake.appspot.com",
+            messagingSenderId: "916747872760"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+
         $(document).ready(function() {
+            var userKey = getCurrentUserKey();
+            console.log(userKey);
             listAllUsers();
         });
 
-        function listAllUsers() {
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyDCc-mZo4wBh0lqr-278x26LStN1GuLhN8",
-                authDomain: "profit-snake.firebaseapp.com",
-                databaseURL: "https://profit-snake.firebaseio.com",
-                projectId: "profit-snake",
-                storageBucket: "profit-snake.appspot.com",
-                messagingSenderId: "916747872760"
-            };
-            firebase.initializeApp(config);
+        function getCurrentUserKey() {
+            firebase.auth().onAuthStateChanged(function(user){
+                // user hols the reference to currentUser variable.
+                database.ref().child('users').orderByChild('name').equalTo(user.email).on("value", function(snapshot) {
+                    snapshot.forEach(function(data) {
+                        return data.key;
+                    });
+                });
+            });
+        }
 
-            var users = firebase.database().ref('users/');
+        function listAllUsers() {
+            var users = database.ref('users/');
             users.on('value', function(usersList) {
 
                 var index = 1;
                 usersList.forEach(function(item) {
-//                    $("#users").find() document.getElementById('')
                     // find existing element
                     var newId = item.val().name.replace(/[^a-z0-9\s]/gi, '');
                     var nonExistingElement = $('#users').find('#'  + newId);
