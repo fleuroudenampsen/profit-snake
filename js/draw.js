@@ -113,16 +113,30 @@ var drawModule = (function () {
         drawSnake();
         drawOtherSnakes();
         createFood();
+
+        firebase.auth().onAuthStateChanged(function(user){
+            database.ref().child('users').orderByChild('name').equalTo(user.email).on("value", function(snapshot) {
+                snapshot.forEach(function(data) {
+                    userKey = data.key;
+                })
+            })
+        });
+
+
         gameloop = setInterval(paint, 120);
     }
 
     var savePosition = function(x, y) {
-        database.ref('users').child('-L5sJLt9zN9NvNTqPvTE').child('position').set({ 'x' : x, 'y' : y } );
+       database.ref('users').child(userKey).child('position').set({ 'x' : x, 'y' : y } );
+       
     }
 
     var drawOtherSnakes = function() {
-        userList.forEach(function(item) {
-            console.log(item);
+        database.ref().child('users').on("value", function(snapshot) {
+            snapshot.forEach(function(data) {
+                var item = data.val();
+                bodySnake(item.position.x, item.position.y)
+            });
         });
        
     }

@@ -42,22 +42,32 @@
             };
         firebase.initializeApp(config);
         var database = firebase.database();
-
+        var userKey;
+        
         $(document).ready(function() {
             listAllUsers();
         });
 
+        function getCurrentUserKey() {
+            firebase.auth().onAuthStateChanged(function(user){
+                // user hols the reference to currentUser variable.
+                database.ref().child('users').orderByChild('name').equalTo(user.email).on("value", function(snapshot) {
+                    snapshot.forEach(function(data) {
+                        userKey = data.key;
+                        return data.key;
+                    });
+                });
+            });
+        }
+
         function listAllUsers() {
-           
-            var users = firebase.database().ref('users/');
-            
+            var users = database.ref('users/');
             users.on('value', function(usersList) {
 
                 var index = 1;
                 userList = usersList;
             
                 usersList.forEach(function(item) {
-//                    $("#users").find() document.getElementById('')
                     // find existing element
                     var newId = item.val().name.replace(/[^a-z0-9\s]/gi, '');
                     var nonExistingElement = $('#users').find('#'  + newId);

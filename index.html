@@ -51,9 +51,10 @@
         };
         firebase.initializeApp(config);
         var database = firebase.database();
+        var email
 
         document.getElementById('login-button').addEventListener('click', function() {
-            var email = document.getElementById('email').value;
+            email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
             firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
                 putInDatabase(email);

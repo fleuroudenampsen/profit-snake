@@ -7,3 +7,4 @@ var snake;
 var snakes = []; 
 var snakeSize = 10;
 var food;
+var userKey;
