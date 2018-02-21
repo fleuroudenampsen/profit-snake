@@ -52,9 +52,11 @@
         var loginButton = document.getElementById('create-button').addEventListener('click', function() {
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
+            console.log(email, password);
             firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
-                $("#login").hide();
-                $("#user").html(email);
+                $('#login').hide();
+            }).catch(function(error){
+                console.log('mislukt', error)
             });
         });
     </script>
