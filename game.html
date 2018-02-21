@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4  col-centered">
+                <span class="header">Prof</span><span class="header red">it</span><span class="header">4Snake</span>
+
+            </div>
+        </div>
+        <div class="row" id="users">
+
+        </div>
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+    <script>
+        $(document).ready(function() {
+            console.log( "ready!" );
+            listAllUsers();
+        });
+
+
+        function listAllUsers() {
+
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyDCc-mZo4wBh0lqr-278x26LStN1GuLhN8",
+                authDomain: "profit-snake.firebaseapp.com",
+                databaseURL: "https://profit-snake.firebaseio.com",
+                projectId: "profit-snake",
+                storageBucket: "profit-snake.appspot.com",
+                messagingSenderId: "916747872760"
+            };
+            firebase.initializeApp(config);
+
+            var users = firebase.database().ref('users/');
+            users.on('value', function(snapshot) {
+                console.log(snapshot.val());
+            });
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
