@@ -3,30 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <h1>Profit snake</h1>
+            <div class="col-md-4  col-centered">
+                <span class="header">Prof</span><span class="header red">it</span><span class="header">4Snake</span>
+
+            </div>
         </div>
-        <div id="login" class="row">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="email-span">E-mail</span>
+        <div class="row" id="login">
+            <div class="col-md-4 col-centered">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="email-span">E-mail</span>
+                    </div>
+                    <input type="text" class="form-control" id="email" aria-describedby="email-span">
                 </div>
-                <input type="text" class="form-control" id="email" aria-describedby="email-span">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="password-span">Password</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="password-span">Password</span>
+                    </div>
+                    <input type="password" class="form-control" id="password" aria-describedby="password-span">
                 </div>
-                <input type="password" class="form-control" id="password" aria-describedby="password-span">
+                <button id="login-button" type="button" class="btn btn-primary" >Login</button>
             </div>
-            <button id="login-button" type="button" class="btn btn-primary" >Login</button>
         </div>
     </div>
 
@@ -52,9 +55,10 @@
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
             firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-                $("#login").hide();
-                $("#screen").show();
-                $("#user").html(email);
+                console.log('Welkom!');
+                $('#login').hide();
+            }).catch(function(){
+                console.log('mislukt')
             });
         });
     </script>

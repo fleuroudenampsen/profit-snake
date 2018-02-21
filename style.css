@@ -1,3 +1,28 @@
 .hide { 
     visibility: hidden;
 }
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+#login-button {
+    float: right;
+    background: #bf0a30;
+    border: none;
+}
+
+.header {
+    font-size: 48px;
+    color: #00335b;
+}
+
+.red {
+    color: #bf0a30;
+}
+
+body {
+    background: #ebebeb;
+
+}
