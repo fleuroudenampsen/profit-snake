@@ -2,10 +2,11 @@ var drawModule = (function () {
 
    
     var bodySnake = function(x, y) {
-          ctx.fillStyle = userColor;
-          ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
-          ctx.strokeStyle = 'darkgreen';
-          ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+        console.log(userColor);
+        ctx.fillStyle = userColor;
+        ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+        ctx.strokeStyle = 'darkgreen';
+        ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
     }
 
     var drawOtherBodySnake = function(color, x, y) {
@@ -126,7 +127,7 @@ var drawModule = (function () {
             database.ref().child('users').orderByChild('name').equalTo(user.email).on("value", function(snapshot) {
                 snapshot.forEach(function(data) {
                     userKey = data.key;
-                    userColor = data.color;
+                    userColor = data.val().color;
                 })
             })
         });
