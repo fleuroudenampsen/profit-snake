@@ -17,6 +17,12 @@ body  {
     border: none;
 }
 
+#logout-button {
+    float: right;
+    background: #bf0a30;
+    border: none;
+}
+
 .header {
     font-size: 48px;
     color: #00335b;

@@ -28,6 +28,13 @@
                 <div id="users"></div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button id="logout-button" type="button" class="btn btn-primary" >Logout</button>
+            </div>
+
+        </div>
+        </div>
     </div>
 
 
@@ -50,6 +57,18 @@
         
         $(document).ready(function() {
             listAllUsers();
+        });
+
+        $('#logout-button').click(function() {
+            firebase.auth().onAuthStateChanged(function(user){
+                // user hols the reference to currentUser variable.
+                database.ref().child('users').orderByChild('name').equalTo(user.email).once("value", function(snapshot) {
+                    snapshot.forEach(function(item){
+                        database.ref('users/' + item.key).remove();
+                    });
+                    window.location.href = 'index.html';
+                });
+            });
         });
 
         function getCurrentUserKey() {
