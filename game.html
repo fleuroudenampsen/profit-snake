@@ -92,7 +92,8 @@
 
                         $('#color-' + index).css('background-color', item.val().color);
                         index++;
-
+                    } else {
+                        nonExistingElement.find('#userScore').text(score);
                     }
 
                 });
