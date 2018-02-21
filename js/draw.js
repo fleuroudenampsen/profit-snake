@@ -144,15 +144,11 @@ var drawModule = (function () {
             snapshot.forEach(function(data) {
                 var item = data.val();
                 if (item.position !== undefined) {
-                    for(var i = 0; i < item.lengte; i++) {
-                        // bodySnake(snake[i].x, snake[i].y);
-                        drawOtherBodySnake(item.color, item.position.x + i, item.position.y)
-                    }
-
+                    drawOtherBodySnake(item.color, item.position.x, item.position.y)
                 }
             });
         });
-       
+
     }
   
   
