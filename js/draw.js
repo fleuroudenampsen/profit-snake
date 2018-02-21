@@ -135,7 +135,9 @@ var drawModule = (function () {
         database.ref().child('users').on("value", function(snapshot) {
             snapshot.forEach(function(data) {
                 var item = data.val();
-                bodySnake(item.position.x, item.position.y)
+                if (item.position !== undefined) {
+                  bodySnake(item.position.x, item.position.y)
+                }
             });
         });
        
