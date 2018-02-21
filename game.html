@@ -29,13 +29,10 @@
 
     <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
     <script>
-        $(document).ready(function() {
-            listAllUsers();
-        });
+        var userList;
 
-        function listAllUsers() {
-            // Initialize Firebase
-            var config = {
+         // Initialize Firebase
+         var config = {
                 apiKey: "AIzaSyDCc-mZo4wBh0lqr-278x26LStN1GuLhN8",
                 authDomain: "profit-snake.firebaseapp.com",
                 databaseURL: "https://profit-snake.firebaseio.com",
@@ -43,12 +40,22 @@
                 storageBucket: "profit-snake.appspot.com",
                 messagingSenderId: "916747872760"
             };
-            firebase.initializeApp(config);
+        firebase.initializeApp(config);
+        var database = firebase.database();
 
+        $(document).ready(function() {
+            listAllUsers();
+        });
+
+        function listAllUsers() {
+           
             var users = firebase.database().ref('users/');
+            
             users.on('value', function(usersList) {
 
                 var index = 1;
+                userList = usersList;
+            
                 usersList.forEach(function(item) {
 //                    $("#users").find() document.getElementById('')
                     // find existing element

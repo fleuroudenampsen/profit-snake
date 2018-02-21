@@ -1,5 +1,6 @@
 var drawModule = (function () { 
 
+   
     var bodySnake = function(x, y) {
           ctx.fillStyle = 'green';
           ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
@@ -76,6 +77,8 @@ var drawModule = (function () {
             bodySnake(snake[i].x, snake[i].y);
           } 
           
+          savePosition(snake[0].x, snake[0].y);
+          
           pizza(food.x, food.y); 
           scoreText();
     }
@@ -106,10 +109,22 @@ var drawModule = (function () {
     }
   
     var init = function(){
-        direction = 'down';
+        direction = 'down';        
         drawSnake();
+        drawOtherSnakes();
         createFood();
-        gameloop = setInterval(paint, 80);
+        gameloop = setInterval(paint, 120);
+    }
+
+    var savePosition = function(x, y) {
+        database.ref('users').child('-L5sJLt9zN9NvNTqPvTE').child('position').set({ 'x' : x, 'y' : y } );
+    }
+
+    var drawOtherSnakes = function() {
+        userList.forEach(function(item) {
+            console.log(item);
+        });
+       
     }
   
   
@@ -117,5 +132,6 @@ var drawModule = (function () {
         init : init
       };
   
+
       
   }());
