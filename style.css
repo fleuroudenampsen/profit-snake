@@ -31,11 +31,24 @@
 }
 
 body {
-    background: #ebebeb;
-
+    background-color: #9bc327;
 }
 
 a {
     color : white !important;
     text-decoration : none !important;
+}
+
+.container {
+    height: 100%;
+}
+#game {
+    border: 8px solid black;
+    height: 100%;
+}
+
+#scoreboard {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-bottom: 8px solid black;
 }

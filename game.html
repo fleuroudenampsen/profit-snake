@@ -3,26 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-3  col-centered">
-                <span class="header">Prof</span><span class="header red">it</span><span class="header">4Snake</span>
-
+        <div id="scoreboard" class="row">
+            <div class="col-md-6">
+                <label id="score">Score: 0</label>
             </div>
         </div>
-        <div class="row">
+        <div id="game" class="row">
             <div class="col-md-6">
                 <canvas id='mycanvas' width='350' height='350' >
                 </canvas>
                 <p>Press start!</p>
                 <button id='start'>START</button>
             </div>
-            <div class="col-md-6" id="users"></div>
+            <div class="col-md-6">
+                <span class="header">Prof</span><span class="header red">it</span><span class="header">4Snake</span>
+                <div id="users"></div>
+            </div>
         </div>
     </div>
 

@@ -26,6 +26,7 @@ var drawModule = (function () {
       var score_text = "Score: " + score;
       ctx.fillStyle = 'blue';
       ctx.fillText(score_text, 145, h-5);
+      $('#score').text(score);
     }
   
     var drawSnake = function() {
