@@ -24,14 +24,8 @@ var drawModule = (function () {
     }
   
     var scoreText = function() {
-      var score_text = "Score: " + score;
-      ctx.fillStyle = 'blue';
-      ctx.fillText(score_text, 145, h-5);
-      $('#score').text("Score: " +score);
-
+      $('#score').text("Score: " + score);
       database.ref('users').child(userKey).child('score').set(score );
-
-
     }
   
     var drawSnake = function() {
