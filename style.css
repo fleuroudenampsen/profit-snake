@@ -22,6 +22,11 @@ body  {
     color: #00335b;
 }
 
+.sub-header {
+    margin-top: 15px;
+    font-size: 24px;
+}
+
 .red {
     color: #bf0a30;
 }
@@ -62,4 +67,8 @@ a {
     margin-top: 15px;
     margin-bottom: 15px;
     border-bottom: 8px solid black;
+}
+
+#userScore {
+    float: right;
 }

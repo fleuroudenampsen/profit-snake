@@ -24,6 +24,7 @@
             </div>
             <div class="col-md-8">
                 <span class="header">Prof</span><span class="header red">it</span><span class="header">4Snake</span>
+                <label class="sub-header">All Time Greatest</label>
                 <div id="users"></div>
             </div>
         </div>
@@ -74,6 +75,10 @@
                     // find existing element
                     var newId = item.val().name.replace(/[^a-z0-9\s]/gi, '');
                     var nonExistingElement = $('#users').find('#'  + newId);
+                    var score =  item.val().score;
+                    if(score == undefined) {
+                        score = 0;
+                    }
                     // skip existing element
                     // append non-existing element
                     if (nonExistingElement.length == 0) {
@@ -81,6 +86,7 @@
                             "<div class='col-md-12' id='"+ newId + "'>" +
                             "<div class='userColor' id='color-" + index + "'></div>" +
                             "<label>" + item.val().name + "</label>" +
+                            "<label id='userScore'>" + score  +  "</label>" +
                             "</div>"
                         );
 
